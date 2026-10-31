@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Secret Santa</title>
+<style>
+body{
+    font-family: Arial,sans-serif;
+    max-width:600px;
+    margin:50px auto;
+    text-align:center;
+}
+.result{
+    font-size:40px;
+    color:red;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<h1>🎅 Secret Santa</h1>
+
+<div id="result"></div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const token = params.get("id");
+
+const assignments = {
+  "abc123": "4",
+  "def456": "2",
+  "ghi789": "5",
+  "jkl111": "1",
+  "mno222": "3",
+  "pqr333": "6"
+};
+
+const resultDiv = document.getElementById("result");
+
+if(token && assignments[token]) {
+    resultDiv.innerHTML =
+      `<p>Robisz prezent dla:</p>
+       <div class="result">${assignments[token]}</div>`;
+} else {
+    resultDiv.innerHTML =
+      "<p>Nieprawidłowy link.</p>";
+}
+
+</script>
+
+</body>
+</html>
